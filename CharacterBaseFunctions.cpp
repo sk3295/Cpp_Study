@@ -3,10 +3,11 @@
 #include "PrintFunctions.h"
 
 void SpawnMonster() {
-	int random = RandomRange(0, 1);
+	int random = RandomRange(0, 2);
 
 	switch (random) {
 	case 0: monster = new Mimic(); break;
+	case 1: monster = new PoisonGoblin(); break;
 	default: monster = new Character("ΩΩ∂Û¿”", 30, 25, 1, 20); break;
 	};
 }

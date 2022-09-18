@@ -2,9 +2,23 @@
 #include "GameData.h"
 #include "PrintFunctions.h"
 
-void PoisonGoblin::AI() {}
+void PoisonGoblin::AI() {
+	Character* target = FindEnemy();
+	if (poisonStack >= 4 && RandomRange(0.0f, 1.0f) < 0.4f) {
+		Skill(target);
+	}
+	else {
+		Attack(target);
+	}
 
-int  PoisonGoblin::Attack(class Character* target, float multiplier = 1.0f) {
+	if (poisonStack >= 2 && RandomRange(0.0f, 1.0f) < (-0.2f + (poisonStack * 0.178f))) {
+		Skill(target);
+	} else {
+		Attack(target);
+	}
+}
+
+int PoisonGoblin::Attack(Character* target, float multiplier) {
 	int attackAmount = RandomRange(0.0f, 1.0f) < 0.7f ? 1 : 2;
 	int result = 0;
 
@@ -48,8 +62,24 @@ int  PoisonGoblin::TakeDamage(class Character* attacker, int damage) {
 		return Character::TakeDamage(attacker, damage);
 	}
 }
-int  PoisonGoblin::Defence(class Character* target) {}
+int  PoisonGoblin::Defence(class Character* target) {
+	PrintLine("독 고블린은 나약한 팔을 방패 삼아 보지만 막을 수 없었다.");
+}
 
-void PoisonGoblin::TurnEnd() {}
+void PoisonGoblin::TurnEnd() {
+	Character* target = FindEnemy();
+	
+	int result = target->TakeDamage(this, poisonStack * 2);
 
-void PoisonGoblin::OnMonsterSpawn() {}
+	Print(target->name);
+	Print("에게 독의 피해를 주고 있다.");
+
+	Print(target->name);
+	Print("에게");
+	Print(ToString(result));
+	PrintLine("피해!");
+} 
+
+void PoisonGoblin::OnMonsterSpawn() {
+	poisonStack = 0;
+}
