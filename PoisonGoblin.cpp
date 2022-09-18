@@ -30,16 +30,24 @@ int  PoisonGoblin::Skill(class Character* target) {
 		poisonStack = 0;
 		Print(target->name);
 		PrintLine("에게 퍼져있던 독을 한 번에 터트린다!");
+
 		Print(target->name);
 		Print("에게");
-		Print(result);
+		Print(ToString(result));
 		PrintLine("의 데미지를 입었다.");
 	};
 
 	return result;
 }
 
-int  PoisonGoblin::TakeDamage(class Character* attacker, int damage) {}
+int  PoisonGoblin::TakeDamage(class Character* attacker, int damage) {
+	if (RandomRange(0.0f, 1.0f) < 0.25f) {
+		PrintLine("독 고블린은 공격을 회피했다!");
+		return 0;
+	} else {
+		return Character::TakeDamage(attacker, damage);
+	}
+}
 int  PoisonGoblin::Defence(class Character* target) {}
 
 void PoisonGoblin::TurnEnd() {}
