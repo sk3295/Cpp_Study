@@ -42,8 +42,7 @@ public:
 	virtual int  TakeHeal(class Character*  healer, int heal);		
 };
 
-class Mimic : public Character
-{
+class Mimic : public Character {
 	int passTurn = 2;
 public:
 	Mimic() : Character("นฬนอ", 60, 30, 15, 25) { Defence(FindEnemy()); };
@@ -70,6 +69,27 @@ public:
 	
 	void TurnEnd();
 	
+	void OnMonsterSpawn();
+};
+
+class Archer : public Character {
+	int concealmentState = 0;
+public:
+	Archer() : Character("พฦรณ", 70, 50, 20, 40) {
+
+	}
+
+	void AI();
+
+	int  Attack(class Character* target, float multiplier = 1.0f);
+	int  Skill(class Character* target);
+
+	int  TakeDamage(class Character* attacker, int damage);
+	int  Defence(class Character* target);
+	int  Potion(class Character* target);
+
+	void TurnEnd();
+
 	void OnMonsterSpawn();
 };
 

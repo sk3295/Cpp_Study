@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actions.cpp" />
+    <ClCompile Include="Archer.cpp" />
     <ClCompile Include="CharacterBaseFunctions.cpp" />
     <ClCompile Include="GameMain.cpp" />
     <ClCompile Include="InputFunction.cpp" />

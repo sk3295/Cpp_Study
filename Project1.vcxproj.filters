@@ -51,6 +51,9 @@
     <ClCompile Include="PoisonGoblin.cpp">
       <Filter>소스 파일\Character</Filter>
     </ClCompile>
+    <ClCompile Include="Archer.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions.h">
