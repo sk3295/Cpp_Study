@@ -38,7 +38,7 @@ public:
 	virtual int  Skill  (class Character* target);					
 	virtual int  Defence(class Character* target);					
 	virtual int  Potion (class Character* target);				
-	virtual int  TakeDamage(class Character* attacker, int damage);	
+	virtual int  TakeDamage(class Character* attacker, int damage);
 	virtual int  TakeHeal(class Character*  healer, int heal);		
 };
 
